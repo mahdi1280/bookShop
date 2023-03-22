@@ -1,7 +1,6 @@
 package ir.javapro.seesion3.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,6 +9,9 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Table(schema = SchemaName.SchemaName)
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book extends BaseEntity {
 
     private String name;
