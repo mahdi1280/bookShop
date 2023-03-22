@@ -5,6 +5,8 @@ import ir.javapro.seesion3.dto.response.BookResponse;
 import ir.javapro.seesion3.exception.RuleException;
 import ir.javapro.seesion3.model.Book;
 import ir.javapro.seesion3.repository.BookRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -26,6 +28,16 @@ public class BookServiceImpl implements BookService {
             throw new RuleException("book.is.exist");
         Book save = bookRepository.save(createBook(bookRequest));
         return createBookResponse(save);
+    }
+
+    @Override
+    public Page<BookResponse> findAll(Pageable pageable) {
+        return bookRepository.findAll(pageable)
+                .map((book)->BookResponse.builder()
+                        .id(book.getId())
+                        .name(book.getName())
+                        .price(book.getPrice())
+                        .build());
     }
 
     private Book createBook(BookRequest bookRequest){
