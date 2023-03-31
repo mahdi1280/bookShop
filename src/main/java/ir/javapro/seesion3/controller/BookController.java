@@ -42,4 +42,9 @@ public class BookController {
         return ResponseEntity.ok(bookService.findById(id));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteBook(@PathVariable Long id){
+        bookService.deleted(id);
+        return ResponseEntity.ok().build();
+    }
 }

@@ -11,7 +11,6 @@ public interface BookRepository extends JpaRepository<Book,Long> {
 
     Optional<Book> findByName(String name);
 
-
     @Query("select b from  Book  b where b.name like :name")
     List<Book> findByNameV2(String name);
 
