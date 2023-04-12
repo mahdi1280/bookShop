@@ -1,7 +1,6 @@
 package ir.javapro.seesion3.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -11,6 +10,9 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Table(schema = SchemaName.SchemaName)
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ShoppingCard extends BaseEntity {
 
     private int count;
